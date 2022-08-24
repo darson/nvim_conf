@@ -44,9 +44,11 @@ vim.keymap.set("c", "<C-A>", "<HOME>", {noremap=true})
 vim.keymap.set("c", "<C-K>", "<END><C-U>", {noremap=true})
 vim.keymap.set("c", "<Down>", function() return vim.fn.wildmenumode() == 1 and "<C-N>" or "<Down>" end, {expr=true})
 vim.keymap.set("c", "<Up>", function() return vim.fn.wildmenumode() == 1 and "<C-P>" or "<Up>" end, {expr=true})
+vim.keymap.set("", "<Leader>tc", ":tabclose<CR>")
+vim.keymap.set("", "<F2>", ":tabprevious<CR>")
+vim.keymap.set("", "<F3>", ":tabnext<CR>")
 
 -- [[ plugins ]]--
 require("plugins")
-
-require("telescope").load_extension "file_browser"
-require'lspconfig'.pyright.setup{}
+require("telescope").load_extension("file_browser")
+require('lspconfig').pyright.setup({})
