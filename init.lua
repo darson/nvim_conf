@@ -1,6 +1,7 @@
 vim.g.mapleader=";"
 
 vim.o.number = true 
+vim.o.ruler = true 
 vim.o.encoding="utf-8"
 vim.o.scrolloff = 7
 vim.o.fileencodings = "utf-8,ucs-bom,gb18030,cp936"
