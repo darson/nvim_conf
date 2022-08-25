@@ -52,3 +52,4 @@ vim.keymap.set("", "<F3>", ":tabnext<CR>")
 require("plugins")
 require("telescope").load_extension("file_browser")
 require('lspconfig').pyright.setup({})
+
