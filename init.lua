@@ -1,6 +1,6 @@
 vim.g.mapleader=";"
 
-vim.o.number = true 
+vim.o.relativenumber = true 
 vim.o.ruler = true 
 vim.o.encoding="utf-8"
 vim.o.scrolloff = 7
@@ -50,7 +50,10 @@ vim.keymap.set("", "<F2>", ":tabprevious<CR>")
 vim.keymap.set("", "<F3>", ":tabnext<CR>")
 
 -- [[ plugins ]]--
-require("plugins")
+require("configs/pack")
 require("telescope").load_extension("file_browser")
 require('lspconfig').pyright.setup({})
+
+-- [[ key map of plugins ]]`
+require("configs/mapping")
 
