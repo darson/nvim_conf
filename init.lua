@@ -51,9 +51,4 @@ vim.keymap.set("", "<F3>", ":tabnext<CR>")
 
 -- [[ plugins ]]--
 require("configs/pack")
-require("telescope").load_extension("file_browser")
-require('lspconfig').pyright.setup({})
-
--- [[ key map of plugins ]]`
-require("configs/mapping")
-
+require("configs/plugin_configs")
