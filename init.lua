@@ -49,6 +49,16 @@ vim.keymap.set("", "<Leader>tc", ":tabclose<CR>")
 vim.keymap.set("", "<F2>", ":tabprevious<CR>")
 vim.keymap.set("", "<F3>", ":tabnext<CR>")
 
+local function bash_at_cpath() 
+  local cmd = [[call chansend(&channel, "cd ]] .. vim.fn.expand("%:p:h") .. [[\n")]]
+  vim.cmd[[vsplit +terminal]]
+  vim.cmd(cmd)
+  vim.cmd[[call chansend(&channel, "reset\n")]]
+  vim.cmd[[startinsert]]
+end
+
+vim.keymap.set('n', "<leader>cp", bash_at_cpath, {})
+
 -- [[ plugins ]]--
 require("configs/pack")
 require("configs/plugin_configs")
