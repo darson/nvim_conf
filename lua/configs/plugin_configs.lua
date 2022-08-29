@@ -12,4 +12,6 @@ vim.keymap.set('', '<leader>i', ":IndentBlanklineToggle<CR>", {})
 
 --[[ telescope ]]--
 require("telescope").load_extension("file_browser")
+vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
+vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
 
