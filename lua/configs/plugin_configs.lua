@@ -10,8 +10,27 @@ require("indent_blankline").setup {
 vim.keymap.set('', '<leader>i', ":IndentBlanklineToggle<CR>", {})
 
 --[[ telescope ]]--
+require("telescope").setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-a>"] = { "<Home>", type = "command" },
+        ["<C-e>"] = { "<End>", type = "command" },
+        ["<C-u>"] = false,
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      theme = "ivy",
+      dir_icon = "-",
+      dir_icon_hl = "+",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+    },
+  }
+}
 require("telescope").load_extension("file_browser")
 vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
 vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
 vim.keymap.set({'n'}, '<leader>bs', ":Telescope file_browser<CR>", {})
-
