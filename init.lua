@@ -49,9 +49,20 @@ vim.keymap.set("", "<Leader>tc", ":tabclose<CR>")
 vim.keymap.set("", "<F2>", ":tabprevious<CR>")
 vim.keymap.set("", "<F3>", ":tabnext<CR>")
 
+--[[ terminal at current path and auto exit ]]--
+--autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
+vim.api.nvim_create_autocmd("TermClose", {
+	pattern = "*",
+	callback = function(arg) 
+		if vim.v.event.status == 0 then 
+      vim.api.nvim_buf_delete(arg.buf, {})
+		end 
+	end})
+
 local function bash_at_cpath() 
   local cmd = [[call chansend(&channel, "cd ]] .. vim.fn.expand("%:p:h") .. [[\n")]]
   vim.cmd[[vsplit +terminal]]
+  vim.cmd[[setlocal nonu norelativenumber]]
   vim.cmd(cmd)
   vim.cmd[[call chansend(&channel, "reset\n")]]
   vim.cmd[[startinsert]]
