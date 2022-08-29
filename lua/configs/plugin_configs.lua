@@ -34,3 +34,11 @@ require("telescope").load_extension("file_browser")
 vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
 vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
 vim.keymap.set({'n'}, '<leader>bs', ":Telescope file_browser<CR>", {})
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    -- Setting this to true or a list of languages will run `:h syntax` and tree-sitter at the same time.
+    additional_vim_regex_highlighting = false,
+  },
+}
