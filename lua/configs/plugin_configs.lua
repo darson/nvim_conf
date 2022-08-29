@@ -33,6 +33,10 @@ require("telescope").setup {
 require("telescope").load_extension("file_browser")
 vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
 vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
+vim.keymap.set({'n'}, '<space>f', function() 
+  local file_dir = vim.fn.expand("%:p:h")
+  require('telescope').extensions.file_browser.file_browser({path=file_dir}) 
+end, {noremap = true})
 vim.keymap.set({'n'}, '<leader>bs', ":Telescope file_browser<CR>", {})
 
 require'nvim-treesitter.configs'.setup {
