@@ -39,6 +39,7 @@ vim.keymap.set({'n'}, '<space>f', function()
 end, {noremap = true})
 vim.keymap.set({'n'}, '<leader>bs', ":Telescope file_browser<CR>", {})
 
+--[[ tree sitter ]]--
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -46,3 +47,6 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+--[[ lazygit --]]--
+vim.keymap.set({'n'}, '<leader>gg', "<cmd>LazyGit<cr>", {silent=true})
