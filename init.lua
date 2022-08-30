@@ -70,6 +70,16 @@ end
 
 vim.keymap.set('n', "<leader>cp", bash_at_cpath, {})
 
+--[[ use terminal to execute user script ]]--
+local function execute_user_script()
+  local cmd = [[call chansend(&channel, "/bin/bash ]] .. vim.fn.expand("%:p:h") .. [[/run.sh\n")]]
+  vim.cmd[[vsplit +terminal]]
+  vim.cmd[[setlocal nonu norelativenumber]]
+  vim.cmd(cmd)
+  vim.cmd[[call chansend(&channel, "exit\n")]]
+end
+vim.keymap.set('n', "<F5>", execute_user_script, {})
+
 -- [[ plugins ]]--
 require("configs/pack")
 require("configs/plugin_configs")
