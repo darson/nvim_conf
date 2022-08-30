@@ -7,6 +7,7 @@ vim.o.scrolloff = 7
 vim.o.fileencodings = "utf-8,ucs-bom,gb18030,cp936"
 vim.o.fileformats = "unix,dos,mac"
 vim.o.wildmode = "longest:full,full"
+vim.o.completeopt = "menu"
 
 -- no <tab> insert <space>
 vim.o.expandtab = true
@@ -86,4 +87,5 @@ vim.keymap.set('n', "<F5>", execute_user_script, {})
 
 -- [[ plugins ]]--
 require("configs/pack")
+require("configs/lsp")
 require("configs/plugin_configs")
