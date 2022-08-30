@@ -72,6 +72,10 @@ vim.keymap.set('n', "<leader>cp", bash_at_cpath, {})
 
 --[[ use terminal to execute user script ]]--
 local function execute_user_script()
+  local user_script_path = vim.fn.expand("%:p:h") .. "/run.sh"
+  if vim.fn.findfile(user_script_path) == "" then
+    return
+  end
   local cmd = [[call chansend(&channel, "/bin/bash ]] .. vim.fn.expand("%:p:h") .. [[/run.sh\n")]]
   vim.cmd[[vsplit +terminal]]
   vim.cmd[[setlocal nonu norelativenumber]]
