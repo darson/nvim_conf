@@ -47,5 +47,3 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
---[[ lazygit --]]--
-vim.keymap.set({'n'}, '<leader>gg', "<cmd>LazyGit<cr>", {silent=true})

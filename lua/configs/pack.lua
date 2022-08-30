@@ -15,8 +15,6 @@ return require('packer').startup(function(use)
   }
 
   use { "nvim-telescope/telescope-file-browser.nvim" }
-
-  use {'kdheepak/lazygit.nvim'}
   use {'neovim/nvim-lspconfig'}
 
 
