@@ -77,11 +77,10 @@ local function execute_user_script()
   if vim.fn.findfile(user_script_path) == "" then
     return
   end
-  local cmd = [[call chansend(&channel, "/bin/bash ]] .. vim.fn.expand("%:p:h") .. [[/run.sh\n")]]
+  local cmd = [[call chansend(&channel, "/bin/bash ]] .. vim.fn.expand("%:p:h") .. [[/run.sh && exit\n")]]
   vim.cmd[[vsplit +terminal]]
   vim.cmd[[setlocal nonu norelativenumber]]
   vim.cmd(cmd)
-  vim.cmd[[call chansend(&channel, "exit\n")]]
 end
 vim.keymap.set('n', "<F5>", execute_user_script, {})
 

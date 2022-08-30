@@ -36,7 +36,6 @@ vim.keymap.set({'n'}, '<space>f', function()
   local file_dir = vim.fn.expand("%:p:h")
   require('telescope').extensions.file_browser.file_browser({path=file_dir}) 
 end, {noremap = true})
-vim.keymap.set({'n'}, '<leader>bs', ":Telescope file_browser<CR>", {})
 
 --[[ tree sitter ]]--
 require'nvim-treesitter.configs'.setup {
