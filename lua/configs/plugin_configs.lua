@@ -23,8 +23,7 @@ require("telescope").setup {
   extensions = {
     file_browser = {
       theme = "ivy",
-      dir_icon = "-",
-      dir_icon_hl = "+",
+      dir_icon = "+",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
     },
