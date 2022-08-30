@@ -47,3 +47,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+--[[ git blame ]]--
+require("gitblame").disable()
+vim.keymap.set('n', '<leader>gg', ":GitBlameToggle<CR>", {})
