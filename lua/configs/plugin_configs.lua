@@ -19,6 +19,7 @@ require("telescope").setup {
         ["<C-u>"] = false,
       },
     },
+    file_ignore_patterns = { "*.pyz", "*.o", "*.pyc", "__pycache__/*", "^.git" }
   },
   extensions = {
     file_browser = {
