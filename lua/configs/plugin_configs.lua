@@ -50,3 +50,5 @@ require'nvim-treesitter.configs'.setup {
 --[[ git blame ]]--
 require("gitblame").disable()
 vim.keymap.set('n', '<leader>gg', ":GitBlameToggle<CR>", {})
+vim.g.gitblame_message_template = '<sha> • <author> • <date> • <summary>'
+vim.g.gitblame_date_format = '%x %H:%M'
