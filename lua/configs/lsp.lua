@@ -22,3 +22,7 @@ end
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
 }
+
+require('lspconfig')['bashls'].setup{
+    on_attach = on_attach,
+}
