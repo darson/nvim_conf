@@ -1,8 +1,8 @@
 vim.g.mapleader=";"
 
-vim.o.relativenumber = true 
-vim.o.number = true 
-vim.o.ruler = true 
+vim.o.relativenumber = true
+vim.o.number = true
+vim.o.ruler = true
 vim.o.encoding="utf-8"
 vim.o.scrolloff = 7
 vim.o.fileencodings = "utf-8,ucs-bom,gb18030,cp936"
@@ -55,13 +55,13 @@ vim.keymap.set("", "<F3>", ":tabnext<CR>")
 --autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
 vim.api.nvim_create_autocmd("TermClose", {
 	pattern = "*",
-	callback = function(arg) 
-		if vim.v.event.status == 0 then 
+	callback = function(arg)
+		if vim.v.event.status == 0 then
       vim.api.nvim_buf_delete(arg.buf, {})
-		end 
+		end
 	end})
 
-local function bash_at_cpath() 
+local function bash_at_cpath()
   local cmd = [[call chansend(&channel, "cd ]] .. vim.fn.expand("%:p:h") .. [[\n")]]
   vim.cmd[[vsplit +terminal]]
   vim.cmd[[setlocal nonu norelativenumber]]
