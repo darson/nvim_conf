@@ -50,6 +50,7 @@ vim.keymap.set("c", "<Up>", function() return vim.fn.wildmenumode() == 1 and "<C
 vim.keymap.set("", "<Leader>tc", ":tabclose<CR>")
 vim.keymap.set("", "<F2>", ":tabprevious<CR>")
 vim.keymap.set("", "<F3>", ":tabnext<CR>")
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
 
 --[[ terminal at current path and auto exit ]]--
 --autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
