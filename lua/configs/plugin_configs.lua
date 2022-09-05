@@ -12,6 +12,9 @@ vim.keymap.set('', '<leader>i', ":IndentBlanklineToggle<CR>", {})
 --[[ telescope ]]--
 require("telescope").setup {
   defaults = {
+    path_display = {
+      shorten = 3
+    },
     mappings = {
       i = {
         ["<C-a>"] = { "<Home>", type = "command" },
@@ -33,9 +36,10 @@ require("telescope").setup {
 require("telescope").load_extension("file_browser")
 vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
 vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
+vim.keymap.set({'n'}, '<leader>ds', ":Telescope lsp_document_symbols<CR>", {})
 vim.keymap.set({'n'}, '<space>f', function()
   local file_dir = vim.fn.expand("%:p:h")
-  require('telescope').extensions.file_browser.file_browser({path=file_dir})
+  require('telescope').extensions.file_browser.file_browser({path=file_dir, cwd_to_path=true})
 end, {noremap = true})
 
 --[[ tree sitter ]]--
@@ -52,3 +56,18 @@ require("gitblame").disable()
 vim.keymap.set('n', '<leader>gg', ":GitBlameToggle<CR>", {})
 vim.g.gitblame_message_template = '<sha> • <author> • <date> • <summary>'
 vim.g.gitblame_date_format = '%x %H:%M'
+
+--[[ ToggleTerm ]]--
+vim.keymap.set('n', "<leader>cp", "<cmd>ToggleTerm<CR>")
+
+--[[ use toggle term to execute user script ]]--
+local function execute_user_script()
+  local user_script_path = vim.fn.expand("%:p:h") .. "/run.sh"
+  if vim.fn.findfile(user_script_path) == "" then
+    return
+  end
+  local cmd = [[/bin/bash ]] .. user_script_path .. [[ && exit]]
+  vim.cmd([[TermExec cmd="]] .. cmd .. [[" direction=float]])
+end
+vim.keymap.set('n', "<F5>", execute_user_script, {})
+

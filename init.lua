@@ -52,40 +52,6 @@ vim.keymap.set("", "<F2>", ":tabprevious<CR>")
 vim.keymap.set("", "<F3>", ":tabnext<CR>")
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
 
---[[ terminal at current path and auto exit ]]--
---autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
-vim.api.nvim_create_autocmd("TermClose", {
-	pattern = "*",
-	callback = function(arg)
-		if vim.v.event.status == 0 then
-      vim.api.nvim_buf_delete(arg.buf, {})
-		end
-	end})
-
-local function bash_at_cpath()
-  local cmd = [[call chansend(&channel, "cd ]] .. vim.fn.expand("%:p:h") .. [[\n")]]
-  vim.cmd[[vsplit +terminal]]
-  vim.cmd[[setlocal nonu norelativenumber]]
-  vim.cmd(cmd)
-  vim.cmd[[call chansend(&channel, "reset\n")]]
-  vim.cmd[[startinsert]]
-end
-
-vim.keymap.set('n', "<leader>cp", bash_at_cpath, {})
-
---[[ use terminal to execute user script ]]--
-local function execute_user_script()
-  local user_script_path = vim.fn.expand("%:p:h") .. "/run.sh"
-  if vim.fn.findfile(user_script_path) == "" then
-    return
-  end
-  local cmd = [[call chansend(&channel, "/bin/bash ]] .. vim.fn.expand("%:p:h") .. [[/run.sh && exit\n")]]
-  vim.cmd[[vsplit +terminal]]
-  vim.cmd[[setlocal nonu norelativenumber]]
-  vim.cmd(cmd)
-end
-vim.keymap.set('n', "<F5>", execute_user_script, {})
-
 -- [[ plugins ]]--
 require("configs/pack")
 require("configs/lsp")
