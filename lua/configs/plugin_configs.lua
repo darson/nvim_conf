@@ -58,7 +58,10 @@ vim.g.gitblame_message_template = '<sha> • <author> • <date> • <summary>'
 vim.g.gitblame_date_format = '%x %H:%M'
 
 --[[ ToggleTerm ]]--
-vim.keymap.set('n', "<leader>cp", "<cmd>ToggleTerm<CR>")
+vim.keymap.set('n', "<leader>cp", function()
+  local file_dir = vim.fn.expand("%:p:h")
+  vim.cmd([[ToggleTerm dir="]] .. file_dir ..  [["]])
+end)
 
 --[[ use toggle term to execute user script ]]--
 local function execute_user_script()
