@@ -62,7 +62,7 @@ vim.keymap.set('n', "<leader>cp", "<cmd>ToggleTerm<CR>")
 
 --[[ use toggle term to execute user script ]]--
 local function execute_user_script()
-  local user_script_path = vim.fn.expand("%:p:h") .. "/run.sh"
+  local user_script_path = vim.fn.getcwd() .. "/run.sh"
   if vim.fn.findfile(user_script_path) == "" then
     return
   end
