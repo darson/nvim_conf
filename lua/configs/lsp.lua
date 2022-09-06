@@ -21,6 +21,7 @@ end
 
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
+    root_dir = require('lspconfig').util.root_pattern('run.sh')
 }
 
 require('lspconfig')['bashls'].setup{
