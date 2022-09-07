@@ -1,6 +1,6 @@
 --[[ for hop ]]--
 vim.keymap.set('', '<leader>hc', "<cmd>lua require'hop'.hint_char2()<cr>", {})
-vim.keymap.set('', '<leader>w', "<cmd>lua require'hop'.hint_words()<cr>", {})
+vim.keymap.set('', '<leader>ll', "<cmd>lua require'hop'.hint_lines()<cr>", {})
 
 --[[ indent blankline --]]
 require("indent_blankline").setup {
