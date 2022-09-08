@@ -27,7 +27,7 @@ vim.o.writebackup = false
 vim.o.swapfile = false
 
 -- use gqip/gwip to format
-vim.o.textwidth = 80
+vim.o.textwidth = 800
 
 -- if you are at EOL, hit l, it will goto the next line
 -- the default is not the case, so use whichwrap

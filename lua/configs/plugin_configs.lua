@@ -24,22 +24,11 @@ require("telescope").setup {
     },
     file_ignore_patterns = { "*.pyz", "*.o", "*.pyc", "__pycache__/*", "^.git" }
   },
-  extensions = {
-    file_browser = {
-      theme = "ivy",
-      -- disables netrw and use telescope-file-browser in its place
-      hijack_netrw = true,
-    },
-  }
 }
-require("telescope").load_extension("file_browser")
 vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
 vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
 vim.keymap.set({'n'}, '<leader>ds', ":Telescope lsp_document_symbols<CR>", {})
-vim.keymap.set({'n'}, '<space>f', function()
-  local file_dir = vim.fn.expand("%:p:h")
-  require('telescope').extensions.file_browser.file_browser({path=file_dir, cwd_to_path=true})
-end, {noremap = true})
+vim.keymap.set({'n'}, '<space>f', ":Neotree toggle reveal<CR>", {})
 
 --[[ tree sitter ]]--
 require'nvim-treesitter.configs'.setup {
