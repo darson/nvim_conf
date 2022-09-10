@@ -8,6 +8,7 @@ vim.o.fileencodings = "utf-8,ucs-bom,gb18030,cp936"
 vim.o.fileformats = "unix,dos,mac"
 vim.o.wildmode = "longest:full,full"
 vim.o.completeopt = "menu"
+vim.cmd[[colorscheme desert]]
 
 -- no <tab> insert <space>
 vim.o.expandtab = true
