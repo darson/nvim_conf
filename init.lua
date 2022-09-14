@@ -43,7 +43,7 @@ vim.o.smartcase = true
 --[[ General Mapping ]]--
 vim.keymap.set("n", "<leader>nl", ":nohl<CR>", {silent=true})
 vim.keymap.set("c", "<C-A>", "<HOME>", {noremap=true})
-vim.keymap.set("c", "<C-K>", "<END><C-U>", {noremap=true})
+vim.keymap.set("c", "<C-K>", "<C-\\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>", {noremap=true})
 vim.keymap.set("c", "<Down>", function() return vim.fn.wildmenumode() == 1 and "<C-N>" or "<Down>" end, {expr=true})
 vim.keymap.set("c", "<Up>", function() return vim.fn.wildmenumode() == 1 and "<C-P>" or "<Up>" end, {expr=true})
 vim.keymap.set("", "<Leader>tc", ":tabclose<CR>")
