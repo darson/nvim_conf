@@ -78,3 +78,6 @@ require('neo-tree').setup({
     }
   }
 })
+
+--[[ colorscheme ]]--
+vim.cmd[[colorscheme tokyonight-night]]
