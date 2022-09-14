@@ -22,7 +22,7 @@ require("telescope").setup {
         ["<C-u>"] = false,
       },
     },
-    file_ignore_patterns = { "*.pyz", "*.o", "*.pyc", "__pycache__/*", "^.git" }
+    file_ignore_patterns = { "*.pyz", "*.o", "*.pyc", "__pycache__/*", "^.git", "*.cmake", "build/*" }
   },
 }
 vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
