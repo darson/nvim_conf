@@ -67,8 +67,6 @@ local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'
 
 vim.keymap.set("n", "<leader>lg", function() lazygit:toggle() end, {noremap = true, silent = true})
 
-
-
 --[[ neotree ]]--
 
 require('neo-tree').setup({
@@ -81,3 +79,10 @@ require('neo-tree').setup({
 
 --[[ colorscheme ]]--
 vim.cmd[[colorscheme tokyonight-night]]
+
+--[[ lualine ]]--
+require('lualine').setup{
+  options = {
+    theme = 'tokyonight-night'
+  }
+}
