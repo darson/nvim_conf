@@ -83,6 +83,6 @@ vim.cmd[[colorscheme tokyonight-night]]
 --[[ lualine ]]--
 require('lualine').setup{
   options = {
-    theme = 'tokyonight-night'
+    theme = 'tokyonight'
   }
 }
