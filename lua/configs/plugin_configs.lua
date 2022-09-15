@@ -19,6 +19,7 @@ require("telescope").setup {
       i = {
         ["<C-a>"] = { "<Home>", type = "command" },
         ["<C-e>"] = { "<End>", type = "command" },
+        ["<C-k>"] = { "<Esc>lc$", type = "command" },
         ["<C-u>"] = false,
       },
     },
