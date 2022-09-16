@@ -1,5 +1,5 @@
 --[[ for hop ]]--
-vim.keymap.set('', '<leader>w', "<cmd>lua require'hop'.hint_words()<cr>", {})
+vim.keymap.set('', '<leader>ww', "<cmd>lua require'hop'.hint_words()<cr>", {})
 vim.keymap.set('', '<leader>ll', "<cmd>lua require'hop'.hint_lines()<cr>", {})
 
 --[[ indent blankline --]]
@@ -7,7 +7,7 @@ require("indent_blankline").setup {
   enabled = false,
   show_first_indent_level = false,
 }
-vim.keymap.set('', '<leader>i', ":IndentBlanklineToggle<CR>", {})
+vim.keymap.set('', '<leader>ii', ":IndentBlanklineToggle<CR>", {})
 
 --[[ telescope ]]--
 require("telescope").setup {
@@ -26,10 +26,10 @@ require("telescope").setup {
     file_ignore_patterns = { "%.pyz", "%.o", "%.pyc", ".*__pycache__/.*", "^.git", "%.cmake", "^build/.*", "%.clangd/.*" }
   },
 }
-vim.keymap.set({'n'}, '<leader>f', ":Telescope find_files<CR>", {})
+vim.keymap.set({'n'}, '<leader>ff', ":Telescope find_files<CR>", {})
 vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
 vim.keymap.set({'n'}, '<leader>ds', ":Telescope lsp_document_symbols<CR>", {})
-vim.keymap.set({'n'}, '<space>f', ":Neotree toggle reveal<CR>", {})
+vim.keymap.set({'n'}, '<space>ff', ":Neotree toggle reveal<CR>", {})
 
 --[[ tree sitter ]]--
 require'nvim-treesitter.configs'.setup {
