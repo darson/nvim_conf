@@ -13,7 +13,8 @@ local function find_home_share()
 
   if (model_backtest:is_dir() and scripts:is_dir() and model_train:is_dir()) then
     require('telescope.builtin').find_files({
-      search_dirs = {model_backtest:expand(), scripts:expand(), model_train:expand()}
+      search_dirs = {model_backtest:expand(), scripts:expand(), model_train:expand()},
+      follow = true
     })
   else
     print("model_backtest/scripts/model_train are missing")
