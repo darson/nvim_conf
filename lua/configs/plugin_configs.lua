@@ -27,7 +27,6 @@ require("telescope").setup {
   },
 }
 vim.keymap.set({'n'}, '<leader>ff', ":Telescope find_files<CR>", {})
-vim.keymap.set({'n'}, '<leader>bf', ":Telescope buffers<CR>", {})
 vim.keymap.set({'n'}, '<leader>ds', ":Telescope lsp_document_symbols<CR>", {})
 vim.keymap.set({'n'}, '<space>ff', ":Neotree toggle reveal<CR>", {})
 

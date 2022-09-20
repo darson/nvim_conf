@@ -24,3 +24,24 @@ end
 
 vim.keymap.set('n', '<leader>hs', find_home_share)
 vim.keymap.set('n', '<leader>cf', find_neovim_config)
+
+local function my_buffer()
+  require'telescope.builtin'.buffers{
+    attach_mappings = function(prompt_bufnr, map)
+      local delete_buf = function()
+        local action_state = require('telescope.actions.state')
+        local actions = require('telescope.actions')
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+        my_buffer()
+      end
+
+      map('i', '<c-d>', delete_buf)
+      map('n', 'd', delete_buf)
+
+      return true
+    end
+  }
+end
+vim.keymap.set('n', '<leader>bf', my_buffer)
