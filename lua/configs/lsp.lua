@@ -7,16 +7,28 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local state = 1
+
+  local function toggle()
+    if state == 1 then
+      vim.diagnostic.disable()
+    else
+      vim.diagnostic.enable()
+    end
+    state = (state + 1) % 2
+  end
+
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('i', '<C-n>', vim.lsp.omnifunc, bufopts)
 
-  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, bufopts)
+  vim.keymap.set('n', '<space>ql', vim.diagnostic.setloclist, bufopts)
+  vim.keymap.set('n', '<space>of', vim.diagnostic.open_float, bufopts)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+  vim.keymap.set('n', '<space>tt', toggle, bufopts)
 end
 
 require('lspconfig')['pyright'].setup{
