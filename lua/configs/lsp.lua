@@ -3,6 +3,7 @@
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.wo.signcolumn = 'yes'
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -80,9 +81,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     virtual_text = {
       spacing = 4,
     },
-    -- Use a function to dynamically turn signs off
-    -- and on, using buffer local variables
-    signs = false,
+    signs = true,
     update_in_insert = false,
   }
 )
