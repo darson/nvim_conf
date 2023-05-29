@@ -48,9 +48,27 @@ require'lspconfig'.cmake.setup{
   on_attach = on_attach
 }
 
+require'lspconfig'.gopls.setup{
+  on_attach = on_attach
+}
+
+require'lspconfig'.tsserver.setup{
+  on_attach = on_attach,
+  init_options = {
+    completionDisableFilterText = true,
+  }
+}
+
 require'lspconfig'.rust_analyzer.setup{
   on_attach = on_attach,
   settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+  --[[settings = {
     ["rust-analyzer"] = {
       imports = {
         granularity = {
@@ -67,7 +85,7 @@ require'lspconfig'.rust_analyzer.setup{
         enable = true
       },
     }
-  }
+  }--]]
 }
 
 
@@ -83,3 +101,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   }
 )
+
