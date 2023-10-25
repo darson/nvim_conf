@@ -3,11 +3,10 @@ vim.keymap.set('', '<leader>ww', "<cmd>lua require'hop'.hint_words()<cr>", {})
 vim.keymap.set('', '<leader>ll', "<cmd>lua require'hop'.hint_lines()<cr>", {})
 
 --[[ indent blankline --]]
-require("indent_blankline").setup {
+require("ibl").setup {
   enabled = false,
-  show_first_indent_level = false,
 }
-vim.keymap.set('', '<leader>ii', ":IndentBlanklineToggle<CR>", {})
+vim.keymap.set('', '<leader>ii', ":IBLToggle<CR>", {})
 
 --[[ telescope ]]--
 require("telescope").setup {
@@ -40,7 +39,10 @@ require'nvim-treesitter.configs'.setup {
 }
 
 --[[ git blame ]]--
-require("gitblame").disable()
+require('gitblame').setup {
+     --Note how the `gitblame_` prefix is omitted in `setup`
+    enabled = false,
+}
 vim.keymap.set('n', '<leader>gg', ":GitBlameToggle<CR>", {})
 vim.g.gitblame_message_template = '<sha> • <author> • <date> • <summary>'
 vim.g.gitblame_date_format = '%x %H:%M'
