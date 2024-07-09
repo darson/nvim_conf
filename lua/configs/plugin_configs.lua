@@ -38,14 +38,14 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
---[[ git blame ]]--
+--[[ git blame 
 require('gitblame').setup {
      --Note how the `gitblame_` prefix is omitted in `setup`
     enabled = false,
 }
 vim.keymap.set('n', '<leader>gg', ":GitBlameToggle<CR>", {})
 vim.g.gitblame_message_template = '<sha> • <author> • <date> • <summary>'
-vim.g.gitblame_date_format = '%x %H:%M'
+vim.g.gitblame_date_format = '%x %H:%M']]--
 
 --[[ ToggleTerm ]]--
 vim.keymap.set('n', "<leader>cp", function()
