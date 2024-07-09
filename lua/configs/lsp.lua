@@ -59,17 +59,6 @@ require'lspconfig'.tsserver.setup{
   }
 }
 
-require'lspconfig'.rust_analyzer.setup{
-  on_attach = on_attach,
-  settings = {
-    ['rust-analyzer'] = {
-      diagnostics = {
-        enable = true;
-      }
-    }
-  }
-}
-
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

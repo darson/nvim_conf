@@ -55,7 +55,7 @@ vim.keymap.set("n","<C-\\><C-\\>", "<C-W>W")
 vim.keymap.set("i","<C-\\><C-\\>", "<ESC><C-W>W")
 
 -- [[ plugins ]]--
-require("configs/pack")
+require("configs/lazy")
 require("configs/lsp")
 require("configs/plugin_configs")
 require("configs/telescope")
