@@ -16,7 +16,7 @@ vim.o.expandtab = true
 -- shift width is when you shift blocks >> <<
 -- or if smarttab is on, the first indent of the graph
 vim.o.shiftwidth = 2
-vim.o.smarttab = 2
+vim.o.smarttab = true
 vim.o.tabstop = 2
 
 -- override vim's stupid default format for python
