@@ -52,6 +52,11 @@ require'lspconfig'.gopls.setup{
   on_attach = on_attach
 }
 
+
+require'lspconfig'.lua_ls.setup{
+  on_attach = on_attach
+}
+
 require'lspconfig'.tsserver.setup{
   on_attach = on_attach,
   init_options = {
