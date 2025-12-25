@@ -38,14 +38,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
---[[ git blame 
-require('gitblame').setup {
-     --Note how the `gitblame_` prefix is omitted in `setup`
-    enabled = false,
-}
-vim.keymap.set('n', '<leader>gg', ":GitBlameToggle<CR>", {})
-vim.g.gitblame_message_template = '<sha> • <author> • <date> • <summary>'
-vim.g.gitblame_date_format = '%x %H:%M']]--
 
 --[[ ToggleTerm ]]--
 vim.keymap.set('n', "<leader>cp", function()
@@ -63,11 +55,6 @@ local function execute_user_script()
   vim.cmd([[TermExec cmd="]] .. cmd .. [[" direction=float]])
 end
 vim.keymap.set('n', "<F5>", execute_user_script, {})
-
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float' })
-
-vim.keymap.set("n", "<leader>lg", function() lazygit:toggle() end, {noremap = true, silent = true})
 
 --[[ colorscheme ]]--
 vim.cmd[[colorscheme tokyonight-night]]
