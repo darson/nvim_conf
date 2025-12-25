@@ -12,9 +12,9 @@ local on_attach = function(client, bufnr)
 
   local function toggle()
     if state == 1 then
-      vim.diagnostic.disable()
+      vim.diagnostic.enable(false)
     else
-      vim.diagnostic.enable()
+      vim.diagnostic.enable(true)
     end
     state = (state + 1) % 2
   end
@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('i', '<C-n>', vim.lsp.omnifunc, bufopts)
+  vim.keymap.set('i', '<C-n>', '<c-x><c-o>', bufopts)
 
   vim.keymap.set('n', '<space>ql', vim.diagnostic.setloclist, bufopts)
   vim.keymap.set('n', '<space>of', vim.diagnostic.open_float, bufopts)
@@ -32,37 +32,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>tt', toggle, bufopts)
 end
 
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    root_dir = require('lspconfig').util.root_pattern('run.sh')
-}
-
-require('lspconfig')['bashls'].setup{
-    on_attach = on_attach,
-}
-
-require'lspconfig'.clangd.setup{
-  on_attach = on_attach
-}
-require'lspconfig'.cmake.setup{
-  on_attach = on_attach
-}
-
-require'lspconfig'.gopls.setup{
-  on_attach = on_attach
-}
-
-
-require'lspconfig'.lua_ls.setup{
-  on_attach = on_attach
-}
-
-require'lspconfig'.tsserver.setup{
+vim.lsp.config['pyright'] = {
   on_attach = on_attach,
-  init_options = {
-    completionDisableFilterText = true,
-  }
 }
+vim.lsp.enable('pyright')
+vim.lsp.config('rust_analyzer', {
+  on_attach = on_attach,
+})
+vim.lsp.enable('rust_analyzer')
 
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -71,7 +48,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     underline = true,
     -- Enable virtual text, override spacing to 4
     virtual_text = {
-      spacing = 4,
+      spacing = 2,
     },
     signs = true,
     update_in_insert = false,
