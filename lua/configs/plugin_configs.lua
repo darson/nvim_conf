@@ -30,7 +30,7 @@ vim.keymap.set({'n'}, '<leader>ds', ":Telescope lsp_document_symbols<CR>", {})
 vim.keymap.set({'n'}, '<space>ff', ":Neotree toggle reveal<CR>", {})
 
 --[[ tree sitter ]]--
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.config'.setup {
   highlight = {
     enable = true,
     -- Setting this to true or a list of languages will run `:h syntax` and tree-sitter at the same time.
